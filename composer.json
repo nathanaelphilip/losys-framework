@@ -1,0 +1,19 @@
+{
+  "name": "nathanaelphilip/losys-framework",
+  "description": "Framework for Losys",
+  "type": "library",
+  "authors": [
+    {
+      "name": "nathanaelphilip",
+      "email": "hello@nathanaelphilip.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "LoSys\\": "src/"
+    }
+  },
+  "require": {
+    "php": "^7.2"
+  }
+}
