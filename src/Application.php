@@ -5,6 +5,7 @@
     namespace LoSys;
 
     use Dotenv\Dotenv;
+    use Symfony\Component\HttpFoundation\Request;
 
     final class Application
     {
