@@ -52,14 +52,17 @@
         $request = Request::createFromGlobals();
         define('WP_HOME', env('WP_URL', $request->getSchemeAndHttpHost()));
         // Set the WordPress directory path.
-        define('WP_SITEURL', env('WP_SITEURL', sprintf('%s/%s', WP_HOME, env('WP_DIR', 'wordpress'))));
+        define('WP_SITEURL', env('WP_SITEURL', sprintf('%s/%s', WP_HOME, env('WP_DIR', 'cms'))));
         // Set the WordPress content directory path.
         define('WP_CONTENT_DIR', env('WP_CONTENT_DIR', $this->getPublicPath()));
         define('WP_CONTENT_URL', env('WP_CONTENT_URL', WP_HOME));
+        // Set the WordPress plugin directory path.
+        define('WP_PLUGIN_DIR', env('WP_PLUGIN_DIR', $this->getPublicPath() .DIRECTORY_SEPARATOR. 'extensions'));
+        define('WP_PLUGIN_URL', env('WP_PLUGIN_URL', 'extensions'));
         // Set the trash to less days to optimize WordPress.
         define('EMPTY_TRASH_DAYS', env('EMPTY_TRASH_DAYS', 7));
         // Set the default WordPress theme.
-        define('WP_DEFAULT_THEME', env('WP_THEME', 'wordplate'));
+        define('WP_DEFAULT_THEME', env('WP_THEME', 'LoSys'));
         // Constant to configure core updates.
         define('WP_AUTO_UPDATE_CORE', env('WP_AUTO_UPDATE_CORE', 'minor'));
         // Specify the number of post revisions.
@@ -70,7 +73,7 @@
         define('DISALLOW_FILE_EDIT', env('DISALLOW_FILE_EDIT', true));
         // Set the absolute path to the WordPress directory.
         if (!defined('ABSPATH')) {
-            define('ABSPATH', sprintf('%s/%s/', $this->getPublicPath(), env('WP_DIR', 'wordpress')));
+          define('ABSPATH', sprintf('%s/%s/', $this->getPublicPath(), env('WP_DIR', 'cms')));
         }
       }
 
@@ -82,7 +85,7 @@
       public function getPublicPath(): string
       {
           if (is_null($this->publicPath)) {
-              return $this->basePath.DIRECTORY_SEPARATOR.'public';
+              return $this->basePath;
           }
           return $this->publicPath;
       }
