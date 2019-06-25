@@ -11,6 +11,9 @@
   "autoload": {
     "psr-4": {
       "LoSys\\": "src/"
+    },
+    "files": {
+      "src/helpers.php"
     }
   },
   "require": {
