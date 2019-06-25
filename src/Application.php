@@ -63,7 +63,7 @@
         define('WP_PLUGIN_DIR', env('WP_PLUGIN_DIR', $this->getPublicPath() .DIRECTORY_SEPARATOR. 'extensions'));
         define('WP_PLUGIN_URL', env('WP_PLUGIN_URL', 'extensions'));
         // Set the WordPress uploads directory path.
-        #define('UPLOADS', env('UPLOADS', $this->getPublicPath() .DIRECTORY_SEPARATOR. 'media'));
+        define('UPLOADS', env('UPLOADS', $this->getPublicPath() .DIRECTORY_SEPARATOR. 'media'));
         // Set the trash to less days to optimize WordPress.
         define('EMPTY_TRASH_DAYS', env('EMPTY_TRASH_DAYS', 7));
         // Set the default WordPress theme.
