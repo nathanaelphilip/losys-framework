@@ -12,9 +12,9 @@
     "psr-4": {
       "LoSys\\": "src/"
     },
-    "files": {
+    "files": [
       "src/helpers.php"
-    }
+    ]
   },
   "require": {
     "php": "^7.2",
