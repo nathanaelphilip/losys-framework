@@ -67,7 +67,7 @@
         // Set the trash to less days to optimize WordPress.
         define('EMPTY_TRASH_DAYS', env('EMPTY_TRASH_DAYS', 7));
         // Set the default WordPress theme.
-        define('WP_DEFAULT_THEME', env('WP_THEME', 'LoSys'));
+        define('WP_DEFAULT_THEME', env('WP_DEFAULT_THEME', 'losys'));
         // Constant to configure core updates.
         define('WP_AUTO_UPDATE_CORE', env('WP_AUTO_UPDATE_CORE', 'minor'));
         // Specify the number of post revisions.
