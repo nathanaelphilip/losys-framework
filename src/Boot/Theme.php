@@ -4,32 +4,32 @@
   // TODO: clean up - what can we “magic“ and what needs to be moved to the theme?
   // TODO: use env function for ENV TYPE
 
-  namespace app\services\setup;
+  namespace LoSys\Boot;
 
-  use app\services\Environment;
+  #use app\services\Environment;
 
   class Theme
   {
     private $env;
 
-    public function __construct ()
+    public static function boot ()
     {
-      $this->env = new Environment;
-      $this->editor_menu_priviledges();
+      #$this->env = new Environment;
+      self::editor_menu_priviledges();
 
 
-      add_action('admin_init', [$this, 'admin_init']);
-      add_action('after_setup_theme', [$this, 'after_setup_theme']);
-      add_action('wp_head', [$this, 'wp_head']);
+      add_action('admin_init', [__CLASS__, 'admin_init']);
+      add_action('after_setup_theme', [__CLASS__, 'after_setup_theme']);
+      add_action('wp_head', [__CLASS__, 'wp_head']);
 
       // Preservers ACF Serial Number
-      add_filter( 'wpmdb_preserved_options', [$this, 'wpmdb_preserved_options']);
+      add_filter( 'wpmdb_preserved_options', [__CLASS__, 'wpmdb_preserved_options']);
 
       // Sets site as public/private
-      add_action('init', [$this, 'init']);
+      add_action('init', [__CLASS__, 'init']);
     }
 
-    private function editor_menu_priviledges ()
+    private static function editor_menu_priviledges ()
     {
       // get the the role object
       $role_object = get_role( 'editor' );
@@ -37,7 +37,7 @@
       $role_object->add_cap( 'edit_theme_options' );
     }
 
-    public function init ()
+    public static function init ()
     {
       if(ENV_TYPE == 'staging' && get_option('blog_public') == '1') {
         update_option('blog_public', '0');
@@ -48,14 +48,14 @@
       }
     }
 
-    public function admin_init ()
+    public static function admin_init ()
     {
       global $wp_rewrite;
       $pattern = '/%postname%/';
       $wp_rewrite->set_permalink_structure($pattern);
     }
 
-    public function after_setup_theme ()
+    public static function after_setup_theme ()
     {
       // Show the admin bar.
       show_admin_bar(false);
@@ -77,16 +77,16 @@
       ]);
     }
 
-    public function wp_head ()
+    public static function wp_head ()
     {
 ?>
-      <link rel="icon" href="<?= $this->env->tmpltd() ?>/assets/images/favicon.svg " />
+      <link rel="icon" href="/assets/images/favicon.svg " />
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta charset="utf-8">
 <?php
     }
 
-    public function wpmdb_preserved_options ($options)
+    public static function wpmdb_preserved_options ($options)
     {
       $options[] = 'acf_pro_license';
       return $options;

@@ -3,21 +3,21 @@
   namespace LoSys;
 
   class Strip {
-    public function __construct () {
-      add_action( 'init', [$this, 'init']);
+    public static function boot () {
+      add_action( 'init', [__CLASS__, 'init']);
 
-      add_filter( 'intermediate_image_sizes_advanced', [$this, 'disable_remove_default_images'] );
-      add_filter( 'jpeg_quality', [$this, 'disable_jpeg_quality'] );
-      add_filter( 'tiny_mce_plugins', [$this, 'disable_emojis_tinymce'] );
-      add_filter( 'wp_resource_hints', [$this, 'disable_emojis_remove_dns_prefetch'], 10, 2 );
+      add_filter( 'intermediate_image_sizes_advanced', [__CLASS__, 'disable_remove_default_images'] );
+      add_filter( 'jpeg_quality', [__CLASS__, 'disable_jpeg_quality'] );
+      add_filter( 'tiny_mce_plugins', [__CLASS__, 'disable_emojis_tinymce'] );
+      add_filter( 'wp_resource_hints', [__CLASS__, 'disable_emojis_remove_dns_prefetch'], 10, 2 );
       add_filter( 'emoji_svg_url', '__return_false' );
 
-      add_action('admin_head', [$this, 'admin_head']);
+      add_action('admin_head', [__CLASS__, 'admin_head']);
 
-      add_action('admin_menu', [$this, 'admin_menu']);
+      add_action('admin_menu', [__CLASS__, 'admin_menu']);
     }
 
-    public function init ()
+    public static function init ()
     {
       remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
       remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
@@ -36,12 +36,12 @@
       remove_action('rest_api_init', 'create_initial_rest_routes', 99);
     }
 
-    public function disable_jpeg_quality ()
+    public static function disable_jpeg_quality ()
     {
       return 100;
     }
 
-    public function disable_remove_default_images ( $sizes ) {
+    public static function disable_remove_default_images ( $sizes ) {
       unset( $sizes['thumbnail']); // 150px
       unset( $sizes['medium']); // 300px
       unset( $sizes['large']); // 1024px
@@ -49,7 +49,7 @@
       return $sizes;
     }
 
-    public function disable_emojis_tinymce( $plugins ) {
+    public static function disable_emojis_tinymce( $plugins ) {
       if ( is_array( $plugins ) ) {
         return array_diff( $plugins, ['wpemoji'] );
       } else {
@@ -57,7 +57,7 @@
       }
     }
 
-    public function disable_emojis_remove_dns_prefetch( $urls, $relation_type ) {
+    public static function disable_emojis_remove_dns_prefetch( $urls, $relation_type ) {
       if ( 'dns-prefetch' == $relation_type ) {
         $emoji_svg_url = apply_filters( 'emoji_svg_url', 'https://s.w.org/images/core/emoji/2/svg/' );
         $urls = array_diff( $urls, [$emoji_svg_url] );
@@ -66,11 +66,11 @@
       return $urls;
     }
 
-    public function admin_head () {
+    public static function admin_head () {
       remove_action('admin_notices', 'update_nag', 3);
     }
 
-    public function admin_menu () {
+    public static function admin_menu () {
       $items = [
       'themes.php', // appearance
       'edit-comments.php', // comments
