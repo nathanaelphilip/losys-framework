@@ -1,6 +1,6 @@
 <?php
 
-  namespace LoSys;
+  namespace LoSys\Boot;
 
   class Strip {
     public static function boot () {

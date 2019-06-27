@@ -1,6 +1,6 @@
 <?php
 
-    namespace LoSys;
+    namespace LoSys\Services;
 
     final class Form
     {

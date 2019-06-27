@@ -1,7 +1,7 @@
 <?php
     // TODO: Need to work on this a lot;
 
-    namespace LoSys;
+    namespace LoSys\Services;
 
     use \DrewM\MailChimp\MailChimp as MC;
 
