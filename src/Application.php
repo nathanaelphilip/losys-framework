@@ -80,7 +80,7 @@
         define('WPMDB_LICENCE', env('WPMDB_LICENSE'));
         // Set the absolute path to the WordPress directory.
         if (!defined('ABSPATH')) {
-          define('ABSPATH', sprintf('%s/%s/', $this->getPublicPath(), env('WP_DIR', 'cms')));
+          define('ABSPATH', dirname(__FILE__) . '/');
         }
       }
 
