@@ -33,7 +33,6 @@
       remove_action ('wp_head', 'rsd_link'); # put back if client is editing via 3rd party
       remove_action( 'wp_head', 'wlwmanifest_link');
       remove_action( 'wp_head', 'wp_shortlink_wp_head');
-      remove_action('rest_api_init', 'create_initial_rest_routes', 99);
     }
 
     public static function disable_jpeg_quality ()
