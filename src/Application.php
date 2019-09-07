@@ -76,6 +76,8 @@
         define('IMAGE_EDIT_OVERWRITE', env('IMAGE_EDIT_OVERWRITE', true));
         // Prevent file edititing from the dashboard.
         define('DISALLOW_FILE_EDIT', env('DISALLOW_FILE_EDIT', true));
+        // WP Migrate Pro Key
+        define('WPMDB_LICENCE', env('WPMDB_LICENSE'));
         // Set the absolute path to the WordPress directory.
         if (!defined('ABSPATH')) {
           define('ABSPATH', sprintf('%s/%s/', $this->getPublicPath(), env('WP_DIR', 'cms')));
