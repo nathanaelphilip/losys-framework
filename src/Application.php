@@ -61,7 +61,7 @@
         define('WP_CONTENT_URL', env('WP_CONTENT_URL', WP_HOME));
         // Set the WordPress plugin directory path.
         define('WP_PLUGIN_DIR', env('WP_PLUGIN_DIR', $this->getPublicPath() .DIRECTORY_SEPARATOR. 'extensions'));
-        define('WP_PLUGIN_URL', env('WP_PLUGIN_URL', 'extensions'));
+        define('WP_PLUGIN_URL', env('WP_PLUGIN_URL', '/extensions'));
         // Set the WordPress uploads directory path.
         define('UPLOADS', env('UPLOADS', $this->getPublicPath() .DIRECTORY_SEPARATOR. 'media'));
         // Set the trash to less days to optimize WordPress.
