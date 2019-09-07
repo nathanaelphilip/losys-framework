@@ -24,12 +24,15 @@
 
       public function run ()
       {
+        define('ENV_TYPE', 'development');
+
         // For developers: WordPress debugging mode.
         $debug = env('WP_DEBUG', false);
         define('WP_DEBUG', $debug);
         define('WP_DEBUG_LOG', env('WP_DEBUG_LOG', false));
         define('WP_DEBUG_DISPLAY', env('WP_DEBUG_DISPLAY', $debug));
         define('SCRIPT_DEBUG', env('SCRIPT_DEBUG', $debug));
+
         // The database configuration with database name, username, password,
         // hostname charset and database collae type.
         define('DB_NAME', env('DB_NAME'));
@@ -61,7 +64,7 @@
         define('WP_CONTENT_URL', env('WP_CONTENT_URL', WP_HOME));
         // Set the WordPress plugin directory path.
         define('WP_PLUGIN_DIR', env('WP_PLUGIN_DIR', $this->getPublicPath() .DIRECTORY_SEPARATOR. 'extensions'));
-        define('WP_PLUGIN_URL', env('WP_PLUGIN_URL', DIRECTORY_SEPARATOR. 'extensions'));
+        define('WP_PLUGIN_URL', env('WP_PLUGIN_URL', WP_HOME . '/extensions'));
         // Set the WordPress uploads directory path.
         define('UPLOADS', env('UPLOADS', $this->getPublicPath() .DIRECTORY_SEPARATOR. 'media'));
         // Set the trash to less days to optimize WordPress.
@@ -80,7 +83,7 @@
         define('WPMDB_LICENCE', env('WPMDB_LICENSE'));
         // Set the absolute path to the WordPress directory.
         if (!defined('ABSPATH')) {
-          define('ABSPATH', $this->basePath . '/');
+          define('ABSPATH', sprintf('%s/%s/', $this->getPublicPath(), env('WP_DIR', 'cms')));
         }
       }
 
