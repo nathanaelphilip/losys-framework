@@ -60,13 +60,13 @@
         // Set the WordPress directory path.
         define('WP_SITEURL', env('WP_SITEURL', sprintf('%s/%s', WP_HOME, env('WP_DIR', 'cms'))));
         // Set the WordPress content directory path.
-        define('WP_CONTENT_DIR', env('WP_CONTENT_DIR', $this->getPublicPath() .DIRECTORY_SEPARATOR. 'media'));
-        define('WP_CONTENT_URL', env('WP_CONTENT_URL', WP_HOME .DIRECTORY_SEPARATOR. 'media'));
+        define('WP_CONTENT_DIR', env('WP_CONTENT_DIR', $this->getPublicPath()));
+        define('WP_CONTENT_URL', env('WP_CONTENT_URL', WP_HOME));
         // Set the WordPress plugin directory path.
         define('WP_PLUGIN_DIR', env('WP_PLUGIN_DIR', $this->getPublicPath() .DIRECTORY_SEPARATOR. 'extensions'));
         define('WP_PLUGIN_URL', env('WP_PLUGIN_URL', WP_HOME . '/extensions'));
         // Set the WordPress uploads directory path.
-        define('UPLOADS', env('UPLOADS', $this->getPublicPath() .DIRECTORY_SEPARATOR. 'media'));
+        define('UPLOADS', env('UPLOADS', DIRECTORY_SEPARATOR. 'media'));
         // Set the trash to less days to optimize WordPress.
         define('EMPTY_TRASH_DAYS', env('EMPTY_TRASH_DAYS', 7));
         // Set the default WordPress theme.
