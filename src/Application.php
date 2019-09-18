@@ -60,8 +60,8 @@
         // Set the WordPress directory path.
         define('WP_SITEURL', env('WP_SITEURL', sprintf('%s/%s', WP_HOME, env('WP_DIR', 'cms'))));
         // Set the WordPress content directory path.
-        define('WP_CONTENT_DIR', env('WP_CONTENT_DIR', $this->getPublicPath()));
-        define('WP_CONTENT_URL', env('WP_CONTENT_URL', WP_HOME));
+        define('WP_CONTENT_DIR', env('WP_CONTENT_DIR', $this->getPublicPath() .DIRECTORY_SEPARATOR. 'media'));
+        define('WP_CONTENT_URL', env('WP_CONTENT_URL', WP_HOME .DIRECTORY_SEPARATOR. 'media'));
         // Set the WordPress plugin directory path.
         define('WP_PLUGIN_DIR', env('WP_PLUGIN_DIR', $this->getPublicPath() .DIRECTORY_SEPARATOR. 'extensions'));
         define('WP_PLUGIN_URL', env('WP_PLUGIN_URL', WP_HOME . '/extensions'));
