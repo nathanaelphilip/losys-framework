@@ -33,6 +33,8 @@
         define('WP_DEBUG_DISPLAY', env('WP_DEBUG_DISPLAY', $debug));
         define('SCRIPT_DEBUG', env('SCRIPT_DEBUG', $debug));
 
+        define('WP_CACHE', env('WP_CACHE', true));
+
         // The database configuration with database name, username, password,
         // hostname charset and database collae type.
         define('DB_NAME', env('DB_NAME'));

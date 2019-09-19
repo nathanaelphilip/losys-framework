@@ -17,7 +17,6 @@
       #$this->env = new Environment;
       self::editor_menu_priviledges();
 
-
       add_action('admin_init', [__CLASS__, 'admin_init']);
       add_action('after_setup_theme', [__CLASS__, 'after_setup_theme']);
       add_action('wp_head', [__CLASS__, 'wp_head']);
