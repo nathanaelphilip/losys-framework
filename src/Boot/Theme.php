@@ -80,7 +80,6 @@
     public static function wp_head ()
     {
 ?>
-      <link rel="icon" href="/assets/images/favicon.svg " />
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta charset="utf-8">
 <?php
