@@ -1,20 +1,13 @@
 <?php
 
-  // TODO: refactor this Environment stuff
-  // TODO: clean up - what can we “magic“ and what needs to be moved to the theme?
-  // TODO: use env function for ENV TYPE
+  use Timber\Timber;
 
   namespace LoSys\Boot;
 
-  #use app\services\Environment;
-
   class Theme
   {
-    private $env;
-
     public static function boot ()
     {
-      #$this->env = new Environment;
       self::editor_menu_priviledges();
 
       add_action('admin_init', [__CLASS__, 'admin_init']);
