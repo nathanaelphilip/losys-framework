@@ -70,6 +70,20 @@
     }
 
     public static function admin_menu () {
+      global $submenu;
+
+      if (isset($submenu['themes.php'])) {
+        foreach ($submenu['themes.php'] as $key => $item) {
+          if (in_array('customize', $item)) {
+            unset( $submenu[ 'themes.php' ][ $key ] );
+          }
+
+          if (in_array('Themes', $item)) {
+            unset( $submenu[ 'themes.php' ][ $key ] );
+          }
+        }
+      }
+
       $items = [
         //'themes.php', // appearance
         'edit-comments.php', // comments
