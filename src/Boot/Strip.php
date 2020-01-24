@@ -71,14 +71,27 @@
 
     public static function admin_menu () {
       $items = [
-      'themes.php', // appearance
-      'edit-comments.php', // comments
-      'index.php', // dashboard
-      'link-manager.php', // links
+        //'themes.php', // appearance
+        'edit-comments.php', // comments
+        'index.php', // dashboard
+        'link-manager.php', // links
       ];
 
       foreach ($items as $item) {
         remove_menu_page($item);
+      }
+
+      $items = [
+        ['themes.php', 'theme-editor.php'],
+        ['themes.php', 'customize.php'],
+        ['plugins.php', 'plugin-install.php'],
+        ['plugins.php', 'plugin-editor.php'],
+        ['tools.php', 'import.php'],
+        ['tools.php', 'export.php'],
+      ];
+
+      foreach ($items as $item) {
+        remove_submenu_page($item[0], $item[1]);
       }
 
       $boxes = [
